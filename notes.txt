@@ -1,0 +1,31 @@
+// Notifikasi real-time untuk enquiry/job application baru
+- Bell icon di navbar
+- List notifikasi belum dibaca
+- Mark as read
+
+// Track siapa melakukan apa
+- User login/logout
+- Create/update/delete content
+- Export log ke CSV
+
+// Di listing pages (enquiries, jobs, contacts)
+- Checkbox selection
+- Bulk delete
+- Bulk update status
+- Bulk export to CSV
+
+// Di setiap listing page
+- Filter by date range
+- Filter by status
+- Search by name/email/content
+- Save filter presets
+
+// Export ke Excel/CSV
+- Export enquiries
+- Export job applications
+- Export contacts
+- Schedule automatic backup
+
+- Template balasan enquiry
+- Template interview invitation (jobs)
+- Send email langsung dari admin panel
