@@ -123,7 +123,10 @@ export default function Navbar() {
                     className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
                         }`}
                 >
-                    <div className="flex flex-col px-6 pb-8 pt-4 gap-1 bg-white border-t border-gray-100 shadow-xl mx-4 my-2 rounded-2xl">
+                    <div className={`flex flex-col px-6 pb-8 pt-4 gap-1 ${scrolled
+                        ? "bg-transparent border-t border-gray-100"
+                        : "bg-white border-t border-gray-100 shadow-xl mx-4 my-2 rounded-2xl"
+                        }`}>
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
@@ -134,7 +137,7 @@ export default function Navbar() {
                                 {link.label}
                             </Link>
                         ))}
-                        <div className="mt-4 flex flex-col gap-3">
+                        <div className="mt-4 flex flex-col gap-3 px-4">
                             <Link href="/enquiry" onClick={() => setMobileOpen(false)} className="rounded-full border border-[#003366] py-3 text-center text-md font-semibold text-[#003366]">
                                 Enquiry
                             </Link>

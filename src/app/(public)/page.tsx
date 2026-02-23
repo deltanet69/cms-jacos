@@ -90,7 +90,7 @@ function HeroSection() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
                     {/* LEFT — Animated slide text */}
-                    <div className={`order-2 lg:order-1 transition-all duration-500 ${animating ? "opacity-0 -translate-y-4" : "opacity-100 translate-y-0"}`}>
+                    <div className={`order-1 lg:order-1 transition-all duration-500 ${animating ? "opacity-0 -translate-y-4" : "opacity-100 translate-y-0"}`}>
                         <span
                             className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-bold tracking-widest uppercase mb-6 shadow-xl backdrop-blur-md"
                             style={{ backgroundColor: `${slide.accent}33`, color: slide.accent, borderColor: `${slide.accent}55` }}
@@ -98,7 +98,7 @@ function HeroSection() {
                             {slide.badge}
                         </span>
 
-                        <h1 className="text-5xl lg:text-7xl font-semibold text-white leading-[1.1] mb-6 tracking-tight">
+                        <h1 className="text-4xl lg:text-7xl font-semibold text-white leading-[1.1] mb-6 tracking-tight">
                             {slide.headline1} <br />
                             <span style={{ color: slide.accent }} className="font-bold">{slide.headline2}</span>
                         </h1>
@@ -143,7 +143,7 @@ function HeroSection() {
                     </div>
 
                     {/* RIGHT — Admission Card / Image */}
-                    <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+                    <div className="order-2 lg:order-2 flex justify-center lg:justify-end">
                         <div className="relative group max-w-md w-full">
                             <div className="absolute -inset-4 bg-white/5 rounded-[40px] blur-2xl group-hover:bg-white/10 transition-all duration-700" />
 

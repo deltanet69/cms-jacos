@@ -19,7 +19,7 @@ import {
 export default function ContactPage() {
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
     const [formData, setFormData] = useState({
-        name: "",
+        fullName: "",
         email: "",
         phone: "",
         message: ""
@@ -35,13 +35,14 @@ export default function ContactPage() {
                 COLLECTIONS.CONTACT,
                 ID.unique(),
                 {
-                    ...formData,
-                    status: "Read", // Default status for contact messages
-                    createdAt: new Date().toISOString()
+                    fullName: formData.fullName,
+                    email: formData.email,
+                    phone: formData.phone,
+                    message: formData.message
                 }
             );
             setStatus("success");
-            setFormData({ name: "", email: "", phone: "", message: "" });
+            setFormData({ fullName: "", email: "", phone: "", message: "" });
         } catch (error) {
             console.error("Contact submission error:", error);
             setStatus("error");
@@ -49,20 +50,36 @@ export default function ContactPage() {
     };
 
     return (
-        <div className="pt-24 pb-20">
-            {/* PAGE HEADER */}
-            <section className="bg-gray-50 py-20 border-b border-gray-100 mb-20 text-center">
-                <div className="container mx-auto px-4 md:px-6">
-                    <h1 className="text-4xl font-extrabold text-[#003366] md:text-5xl uppercase tracking-tight">Contact Us</h1>
-                    <p className="mt-4 text-lg text-gray-500 max-w-xl mx-auto">We would love to hear from you. Have a question or feedback? Drop us a message below.</p>
+        <div className="min-h-screen bg-white">
+            {/* PREMIUM HEADER */}
+            <section className="relative h-[45vh] pb-16 flex items-end overflow-hidden bg-[#003366]">
+                {/* Background Elements */}
+                <div className="absolute inset-0 z-0">
+                    <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px]" />
+                    <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px]" />
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]" />
+                </div>
+
+                <div className="container mx-auto px-4 md:px-6 relative z-10">
+                    <div className="max-w-3xl">
+                        <div className="inline-flex items-center gap-2 rounded-full bg-blue-900/50 backdrop-blur-sm border border-blue-800/50 px-4 py-1.5 text-xs font-bold text-[#FFCC00] mb-6 uppercase tracking-widest">
+                            Official Channels
+                        </div>
+                        <h1 className="text-4xl font-extrabold text-white md:text-6xl leading-[1.1] mb-2 uppercase tracking-tight">
+                            Contact <span className="text-[#FFCC00]">Us</span>
+                        </h1>
+                        <p className="text-lg text-blue-100/70 leading-relaxed font-medium">
+                            We would love to hear from you. Have a question or feedback? Drop us a message below.
+                        </p>
+                    </div>
                 </div>
             </section>
 
-            <div className="container mx-auto px-4 md:px-6">
+            <div className="container mx-auto px-4 md:px-6 py-20 pb-20">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
                     {/* INFO COLUMN */}
                     <div className="lg:col-span-5 space-y-12">
-                        <div className="space-y-8">
+                        <div className="space-y-2">
                             <h2 className="text-3xl font-bold text-[#003366]">Get in Touch</h2>
                             <p className="text-gray-500 leading-relaxed text-lg">
                                 Visit our campus or reach out via our official communication channels.
@@ -76,8 +93,8 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h4 className="text-lg font-bold text-[#003366] mb-1">Our Location</h4>
-                                    <p className="text-sm text-gray-500 leading-relaxed">
-                                        Jakarta Cosmopolite Islamic School <br /> Jakarta, Indonesia
+                                    <p className="text-md text-gray-500 leading-relaxed">
+                                        Jakarta Cosmopolite Islamic School, Jakarta, Indonesia
                                     </p>
                                 </div>
                             </div>
@@ -88,7 +105,7 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h4 className="text-lg font-bold text-[#003366] mb-1">Call / WhatsApp</h4>
-                                    <p className="text-sm text-gray-500 leading-relaxed">
+                                    <p className="text-md text-gray-500 leading-relaxed">
                                         +62 821 4000 0477
                                     </p>
                                 </div>
@@ -100,7 +117,7 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h4 className="text-lg font-bold text-[#003366] mb-1">Official Email</h4>
-                                    <p className="text-sm text-gray-500 leading-relaxed">
+                                    <p className="text-md text-gray-500 leading-relaxed">
                                         info@jacos.id
                                     </p>
                                 </div>
@@ -119,7 +136,7 @@ export default function ContactPage() {
 
                     {/* FORM COLUMN */}
                     <div className="lg:col-span-7">
-                        <div className="bg-white rounded-[3rem] p-10 md:p-16 shadow-2xl border border-gray-50">
+                        <div className="bg-white rounded-3xl p-10 md:p-16 shadow-xl border-1 border-gray-100">
                             {status === "success" ? (
                                 <div className="text-center py-12">
                                     <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-green-100 text-green-600">
@@ -143,9 +160,9 @@ export default function ContactPage() {
                                                 required
                                                 type="text"
                                                 placeholder="Enter your name"
-                                                value={formData.name}
-                                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                                className="w-full border-b-2 border-gray-100 bg-transparent py-4 text-lg font-bold text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all placeholder:text-gray-200"
+                                                value={formData.fullName}
+                                                onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                                                className="w-full border-b-2 border-gray-100 bg-transparent py-4 text-lg font-medium text-[#003366] focus:border-[#40A1FB] focus:outline-none transition-all placeholder:text-gray-200"
                                             />
                                         </div>
                                         <div className="space-y-3">
@@ -156,7 +173,7 @@ export default function ContactPage() {
                                                 placeholder="Enter your email"
                                                 value={formData.email}
                                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                className="w-full border-b-2 border-gray-100 bg-transparent py-4 text-lg font-bold text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all placeholder:text-gray-200"
+                                                className="w-full border-b-2 border-gray-100 bg-transparent py-4 text-lg font-medium text-[#003366] focus:border-[#40A1FB] focus:outline-none transition-all placeholder:text-gray-200"
                                             />
                                         </div>
                                     </div>
@@ -167,7 +184,7 @@ export default function ContactPage() {
                                             placeholder="+62..."
                                             value={formData.phone}
                                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                            className="w-full border-b-2 border-gray-100 bg-transparent py-4 text-lg font-bold text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all placeholder:text-gray-200"
+                                            className="w-full border-b-2 border-gray-100 bg-transparent py-4 text-lg font-medium text-[#003366] focus:border-[#40A1FB] focus:outline-none transition-all placeholder:text-gray-200"
                                         />
                                     </div>
                                     <div className="space-y-3">
@@ -178,7 +195,7 @@ export default function ContactPage() {
                                             placeholder="How can we help you?"
                                             value={formData.message}
                                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                            className="w-full border-b-2 border-gray-100 bg-transparent py-4 text-lg font-bold text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all placeholder:text-gray-200 resize-none"
+                                            className="w-full border-b-2 border-gray-100 bg-transparent py-4 text-lg font-medium text-[#003366] focus:border-[#40A1FB] focus:outline-none transition-all placeholder:text-gray-200 resize-none"
                                         ></textarea>
                                     </div>
                                     <button

@@ -95,76 +95,74 @@ export default function NewsDetailPage() {
     const featuredImageUrl = getImageUrl(post.featuredImage);
 
     return (
-        <div className="pt-24 pb-20">
+        <div className="bg-white min-h-screen">
             {/* HERO / FEATURED IMAGE */}
-            {featuredImageUrl && (
-                <div className="relative h-[50vh] md:h-[65vh] w-full overflow-hidden bg-gray-900">
+            <section className="relative h-[55vh] md:h-[60vh] w-full overflow-hidden bg-[#003366]">
+                {featuredImageUrl && (
                     <img
                         src={featuredImageUrl}
                         alt={post.title}
-                        className="absolute inset-0 h-full w-full object-cover opacity-60"
+                        className="absolute inset-0 h-full w-full object-cover opacity-30 md:opacity-40"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-5xl mx-auto">
-                        <span className="mb-4 inline-block rounded-full bg-[#FFCC00] px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#003366]">
-                            {post.category || "General"}
-                        </span>
-                        <h1 className="text-3xl md:text-5xl font-black text-white leading-tight max-w-3xl">
-                            {post.title}
-                        </h1>
-                    </div>
-                </div>
-            )}
-
-            <div className="container mx-auto px-4 md:px-6 max-w-4xl">
-                {/* BACK LINK */}
-                <div className="py-8">
-                    <Link
-                        href="/news"
-                        className="inline-flex items-center gap-2 text-sm font-bold text-[#003366] hover:gap-3 transition-all"
-                    >
-                        <ArrowLeft size={18} className="text-[#FFCC00]" /> Back to News
-                    </Link>
-                </div>
-
-                {/* IF no featured image, show title here */}
-                {!featuredImageUrl && (
-                    <div className="mb-8">
-                        <span className="mb-4 inline-block rounded-full bg-[#FFCC00] px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#003366]">
-                            {post.category || "General"}
-                        </span>
-                        <h1 className="text-3xl md:text-5xl font-black text-[#003366] leading-tight mt-4">
-                            {post.title}
-                        </h1>
-                    </div>
                 )}
 
-                {/* META */}
-                <div className="flex flex-wrap items-center gap-6 border-y border-gray-100 py-6 mb-12 text-sm font-semibold text-gray-400">
-                    <span className="flex items-center gap-2">
-                        <Calendar size={16} className="text-[#FFCC00]" />
-                        {format(new Date(post.publishedAt || post.$createdAt), "MMMM d, yyyy")}
-                    </span>
-                    <span className="flex items-center gap-2">
-                        <User size={16} className="text-[#FFCC00]" />
-                        {post.authorName || "JACOS Admin"}
-                    </span>
-                    {post.content && (
-                        <span className="flex items-center gap-2">
-                            <Clock size={16} className="text-[#FFCC00]" />
-                            {estimateReadTime(post.content)}
-                        </span>
-                    )}
+                {/* Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#003366] via-[#003366]/60 to-transparent" />
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,204,0,0.1),transparent_50%)]" />
+
+                <div className="absolute inset-0 flex flex-col justify-end pb-12 md:pb-20">
+                    <div className="container mx-auto px-5 md:px-6 max-w-5xl">
+                        {/* Back navigation inside hero */}
+                        <Link
+                            href="/news"
+                            className="inline-flex items-center gap-2 text-sm font-bold text-white/70 hover:text-[#FFCC00] transition-colors mb-8 group"
+                        >
+                            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Back to News
+                        </Link>
+
+                        <div className="flex flex-col gap-6">
+                            <h1 className="text-3xl md:text-6xl font-black text-white leading-[1.1] max-w-4xl tracking-tight">
+                                {post.title}
+                            </h1>
+
+                            <div className="flex flex-wrap items-center gap-4 md:gap-8">
+                                <span className="inline-block rounded-full bg-[#FFCC00] px-4 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-[#003366] shadow-lg">
+                                    {post.category || "General"}
+                                </span>
+
+                                <div className="flex flex-wrap items-center gap-4 md:gap-6 text-xs md:text-sm font-bold text-blue-100/80">
+                                    <span className="flex items-center gap-2">
+                                        <Calendar size={16} className="text-[#FFCC00]" />
+                                        {format(new Date(post.publishedAt || post.$createdAt), "MMM d, yyyy")}
+                                    </span>
+                                    <span className="flex items-center gap-2">
+                                        <User size={16} className="text-[#FFCC00]" />
+                                        {post.authorName || "JACOS Admin"}
+                                    </span>
+                                    {post.content && (
+                                        <span className="flex items-center gap-2">
+                                            <Clock size={16} className="text-[#FFCC00]" />
+                                            {estimateReadTime(post.content)}
+                                        </span>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </section>
+
+            <div className="container mx-auto px-5 md:px-6 max-w-5xl py-16 md:py-24">
 
                 {/* CONTENT */}
                 <article
-                    className="prose prose-lg max-w-none
+                    className="prose text-lg prose-sm md:prose-lg max-w-none break-words
                         prose-headings:text-[#003366] prose-headings:font-bold
                         prose-p:text-gray-600 prose-p:leading-relaxed
                         prose-a:text-[#003366] prose-a:underline
                         prose-img:rounded-3xl prose-img:shadow-xl
-                        prose-blockquote:border-l-4 prose-blockquote:border-[#FFCC00] prose-blockquote:bg-blue-50 prose-blockquote:rounded-r-2xl prose-blockquote:p-6
+                        prose-blockquote:border-l-4 prose-blockquote:border-[#FFCC00] prose-blockquote:bg-gray-50 prose-blockquote:rounded-r-2xl prose-blockquote:p-6
                         prose-strong:text-[#003366]"
                     dangerouslySetInnerHTML={{ __html: post.content || post.excerpt || "<p>No content available.</p>" }}
                 />

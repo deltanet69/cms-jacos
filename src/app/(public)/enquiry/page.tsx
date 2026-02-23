@@ -22,7 +22,7 @@ export default function EnquiryPage() {
         parentName: "",
         studentName: "",
         email: "",
-        phone: "",
+        phoneNumber: "",
         levelGrade: "Preschool",
         location: "",
         message: ""
@@ -38,9 +38,13 @@ export default function EnquiryPage() {
                 COLLECTIONS.ENQUIRIES,
                 ID.unique(),
                 {
-                    ...formData,
-                    status: "Pending",
-                    createdAt: new Date().toISOString()
+                    parentName: formData.parentName,
+                    studentName: formData.studentName,
+                    email: formData.email,
+                    phoneNumber: formData.phoneNumber,
+                    levelGrade: formData.levelGrade,
+                    location: formData.location,
+                    message: formData.message
                 }
             );
             setStatus("success");
@@ -48,7 +52,7 @@ export default function EnquiryPage() {
                 parentName: "",
                 studentName: "",
                 email: "",
-                phone: "",
+                phoneNumber: "",
                 levelGrade: "Preschool",
                 location: "",
                 message: ""
@@ -61,7 +65,7 @@ export default function EnquiryPage() {
 
     if (status === "success") {
         return (
-            <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 pt-24 pb-20">
+            <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-20">
                 <div className="max-w-md w-full rounded-[3rem] bg-white p-12 text-center shadow-2xl border border-green-50">
                     <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full bg-green-100 text-green-600 animate-bounce">
                         <CheckCircle size={48} strokeWidth={1} />
@@ -82,17 +86,38 @@ export default function EnquiryPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 pt-32 pb-20">
-            <div className="container mx-auto px-4 md:px-6">
+        <div className="min-h-screen bg-gray-50">
+            {/* PREMIUM HEADER */}
+            <section className="relative h-[45vh] pb-16 flex items-end overflow-hidden bg-[#003366]">
+                {/* Background Elements */}
+                <div className="absolute inset-0 z-0">
+                    <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px]" />
+                    <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px]" />
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]" />
+                </div>
+
+                <div className="container mx-auto px-4 md:px-6 relative z-10">
+                    <div className="max-w-3xl">
+                        <div className="inline-flex items-center gap-2 rounded-full bg-blue-900/50 backdrop-blur-sm border border-blue-800/50 px-4 py-1.5 text-xs font-bold text-[#FFCC00] mb-6 uppercase tracking-widest">
+                            <Info size={14} strokeWidth={1.5} /> Admission Session 2026/2027
+                        </div>
+                        <h1 className="text-4xl font-bold text-white md:text-6xl leading-[1.1] mb-2">
+                            Admission <span className="text-[#FFCC00]">Enquiry</span>
+                        </h1>
+                        <p className="text-lg text-blue-100/70 leading-relaxed font-medium">
+                            Join our community and start your child's educational journey with us.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <div className="container mx-auto px-4 md:px-6 py-20">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                     {/* Left Side: Information */}
                     <div className="space-y-10">
-                        <div className="inline-flex items-center gap-2 rounded-full bg-yellow-100 px-4 py-2 text-sm font-bold text-amber-600">
-                            <Info size={16} strokeWidth={1} /> Admission Open for 2026/2027
-                        </div>
-                        <h1 className="text-4xl font-extrabold text-[#003366] md:text-6xl leading-[1.1]">
+                        <h2 className="text-3xl font-extrabold text-[#003366] md:text-5xl leading-[1.2]">
                             Register Your Child's <br /> <span className="text-[#FFCC00]">Bright Future</span>
-                        </h1>
+                        </h2>
                         <p className="text-lg text-gray-500 leading-relaxed max-w-xl">
                             Tell us a bit about your child, and our educational consultants will guide you through the best program choices and enrollment process.
                         </p>
@@ -116,7 +141,7 @@ export default function EnquiryPage() {
                     </div>
 
                     {/* Right Side: Form */}
-                    <div className="rounded-[3rem] bg-white p-8 md:p-12 shadow-2xl border border-gray-100">
+                    <div className="rounded-3xl bg-white p-8 md:p-8 shadow-xl border border-gray-100">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
@@ -129,7 +154,7 @@ export default function EnquiryPage() {
                                             placeholder="John Doe"
                                             value={formData.parentName}
                                             onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
-                                            className="w-full rounded-2xl border border-gray-100 bg-gray-50 py-4 pl-12 pr-4 text-sm font-medium text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all"
+                                            className="w-full rounded-lg border border-gray-300 bg-gray-50 py-4 pl-12 pr-4 text-sm font-medium text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all"
                                         />
                                     </div>
                                 </div>
@@ -143,7 +168,7 @@ export default function EnquiryPage() {
                                             placeholder="Jane Doe"
                                             value={formData.studentName}
                                             onChange={(e) => setFormData({ ...formData, studentName: e.target.value })}
-                                            className="w-full rounded-2xl border border-gray-100 bg-gray-50 py-4 pl-12 pr-4 text-sm font-medium text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all"
+                                            className="w-full rounded-lg border border-gray-300 bg-gray-50 py-4 pl-12 pr-4 text-sm font-medium text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all"
                                         />
                                     </div>
                                 </div>
@@ -160,7 +185,7 @@ export default function EnquiryPage() {
                                             placeholder="john@example.com"
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                            className="w-full rounded-2xl border border-gray-100 bg-gray-50 py-4 pl-12 pr-4 text-sm font-medium text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all"
+                                            className="w-full rounded-lg border border-gray-300 bg-gray-50 py-4 pl-12 pr-4 text-sm font-medium text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all"
                                         />
                                     </div>
                                 </div>
@@ -172,9 +197,9 @@ export default function EnquiryPage() {
                                             required
                                             type="tel"
                                             placeholder="+62 821..."
-                                            value={formData.phone}
-                                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                            className="w-full rounded-2xl border border-gray-100 bg-gray-50 py-4 pl-12 pr-4 text-sm font-medium text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all"
+                                            value={formData.phoneNumber}
+                                            onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
+                                            className="w-full rounded-lg border border-gray-300 bg-gray-50 py-4 pl-12 pr-4 text-sm font-medium text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all"
                                         />
                                     </div>
                                 </div>
@@ -188,7 +213,7 @@ export default function EnquiryPage() {
                                         <select
                                             value={formData.levelGrade}
                                             onChange={(e) => setFormData({ ...formData, levelGrade: e.target.value })}
-                                            className="w-full appearance-none rounded-2xl border border-gray-100 bg-gray-50 py-4 pl-12 pr-4 text-sm font-medium text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all"
+                                            className="w-full appearance-none rounded-lg border border-gray-300 bg-gray-50 py-4 pl-12 pr-4 text-sm font-medium text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all"
                                         >
                                             <option>Preschool</option>
                                             <option>Kindergarten</option>
@@ -205,7 +230,7 @@ export default function EnquiryPage() {
                                             placeholder="e.g. Jakarta Selatan"
                                             value={formData.location}
                                             onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                                            className="w-full rounded-2xl border border-gray-100 bg-gray-50 py-4 pl-12 pr-4 text-sm font-medium text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all"
+                                            className="w-full rounded-lg border border-gray-300 bg-gray-50 py-4 pl-12 pr-4 text-sm font-medium text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all"
                                         />
                                     </div>
                                 </div>
@@ -218,7 +243,7 @@ export default function EnquiryPage() {
                                     placeholder="Tell us more about your enquiry..."
                                     value={formData.message}
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                    className="w-full rounded-2xl border border-gray-100 bg-gray-50 p-6 text-sm font-medium text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all resize-none"
+                                    className="w-full rounded-lg border border-gray-300 bg-gray-50 p-6 text-sm font-medium text-[#003366] focus:border-[#FFCC00] focus:outline-none transition-all resize-none"
                                 ></textarea>
                             </div>
 

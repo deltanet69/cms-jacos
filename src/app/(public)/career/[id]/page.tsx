@@ -85,72 +85,81 @@ export default function CareerDetailPage() {
     return (
         <div className="bg-white min-h-screen">
             {/* HERO HEADER */}
-            <section className="relative h-[48vh] pb-16 flex items-end overflow-hidden bg-[#003366]">
+            <section className="relative min-h-[48vh] py-16 md:h-[48vh] md:py-0 flex items-end overflow-hidden bg-[#003366]">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#FFCC0015,transparent_60%)]" />
                     <div className="absolute inset-0 bg-gradient-to-b from-[#003366]/60 via-transparent to-[#003366]" />
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]" />
                 </div>
                 <div className="container mx-auto px-5 lg:px-12 relative z-10">
                     <Link
                         href="/career"
-                        className="inline-flex items-center gap-2 text-sm font-bold text-white/70 hover:text-white transition-colors mb-6"
+                        className="inline-flex items-center gap-2 text-sm font-bold text-white/70 hover:text-white transition-colors mb-8"
                     >
                         <ArrowLeft size={16} /> Back to Careers
                     </Link>
-                    <div className="flex flex-wrap items-center gap-3 mb-6">
-                        {job.jobType && (
-                            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 text-sm font-bold text-[#FFCC00]">
-                                <Briefcase size={14} /> {job.jobType}
-                            </span>
-                        )}
-                        {job.location && (
-                            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 text-sm font-bold text-blue-100">
-                                <MapPin size={14} /> {job.location}
-                            </span>
-                        )}
-                        {job.timePeriod && (
-                            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 text-sm font-bold text-blue-100">
-                                <Clock size={14} /> {job.timePeriod}
-                            </span>
-                        )}
+
+                    {/* Header Content - Reordered for Mobile Hierarchy */}
+                    <div className="flex flex-col gap-6">
+                        <div>
+                            <h1 className="text-4xl md:text-6xl font-bold text-white max-w-4xl leading-tight">
+                                {job.title}
+                            </h1>
+                            <p className="mt-4 text-blue-200/80 flex items-center gap-2 text-sm font-semibold">
+                                <Calendar size={16} strokeWidth={1.5} /> Posted on {format(new Date(job.$createdAt), "MMMM d, yyyy")}
+                            </p>
+                        </div>
+
+                        <div className="flex flex-wrap items-center gap-3">
+                            {job.jobType && (
+                                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 text-xs md:text-sm font-bold text-[#FFCC00]">
+                                    <Briefcase size={14} /> {job.jobType}
+                                </span>
+                            )}
+                            {job.location && (
+                                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 text-xs md:text-sm font-bold text-blue-100">
+                                    <MapPin size={14} /> {job.location}
+                                </span>
+                            )}
+                            {job.timePeriod && (
+                                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 text-xs md:text-sm font-bold text-blue-100">
+                                    <Clock size={14} /> {job.timePeriod}
+                                </span>
+                            )}
+                        </div>
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-bold text-white max-w-4xl leading-tight">
-                        {job.title}
-                    </h1>
-                    <p className="mt-4 text-blue-200/80 flex items-center gap-2 text-sm font-semibold">
-                        <Calendar size={16} strokeWidth={1.5} /> Posted on {format(new Date(job.$createdAt), "MMMM d, yyyy")}
-                    </p>
                 </div>
             </section>
 
             {/* CONTENT */}
-            <div className="container mx-auto px-5 lg:px-12 py-20 bg-white">
+            <div className="container mx-auto px-5 lg:px-12 py-12 md:py-20 bg-white">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                     {/* LEFT: Job Details */}
-                    <div className="lg:col-span-8 space-y-10">
+                    <div className="lg:col-span-8 space-y-10 overflow-hidden">
                         {jobContent ? (
-                            <div className="bg-white rounded-3xl p-10 shadow-sm border border-gray-100">
+                            <div className="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-gray-100">
                                 <h2 className="text-2xl font-bold text-[#003366] mb-8">Job Description &amp; Requirements</h2>
-                                {/* Scoped styles — !important needed to override Tailwind Preflight reset */}
+                                {/* Scoped styles — Enhanced for Mobile Responsiveness */}
                                 <style>{`
+                                    .job-rich-content { word-wrap: break-word; overflow-wrap: break-word; font-size: 1rem; }
                                     .job-rich-content p { margin-bottom: 1rem !important; line-height: 1.75 !important; color: #374151; }
                                     .job-rich-content br { display: block; margin-bottom: 0.5rem; content: ""; }
-                                    .job-rich-content ul { list-style-type: disc !important; padding-left: 1.75rem !important; margin-bottom: 1rem !important; }
-                                    .job-rich-content ol { list-style-type: decimal !important; padding-left: 1.75rem !important; margin-bottom: 1rem !important; }
-                                    .job-rich-content li { display: list-item !important; list-style: inherit !important; margin-bottom: 0.4rem !important; line-height: 1.75 !important; color: #374151 !important; }
-                                    .job-rich-content .ql-indent-1 { padding-left: 2rem !important; }
-                                    .job-rich-content .ql-indent-1 li,
-                                    .job-rich-content ul ul li { list-style-type: circle !important; }
-                                    .job-rich-content .ql-indent-2 li,
-                                    .job-rich-content ul ul ul li { list-style-type: square !important; }
-                                    .job-rich-content h1 { font-size: 1.875rem !important; font-weight: 800 !important; color: #003366 !important; margin: 1.5rem 0 0.75rem !important; }
-                                    .job-rich-content h2 { font-size: 1.5rem !important; font-weight: 700 !important; color: #003366 !important; margin: 1.5rem 0 0.75rem !important; }
-                                    .job-rich-content h3 { font-size: 1.25rem !important; font-weight: 700 !important; color: #003366 !important; margin: 1.25rem 0 0.5rem !important; }
+                                    .job-rich-content ul { list-style-type: disc !important; padding-left: 1.25rem !important; margin-bottom: 1rem !important; }
+                                    .job-rich-content ol { list-style-type: decimal !important; padding-left: 1.25rem !important; margin-bottom: 1rem !important; }
+                                    @media (min-width: 768px) {
+                                        .job-rich-content ul, .job-rich-content ol { padding-left: 1.75rem !important; }
+                                    }
+                                    .job-rich-content li { display: list-item !important; list-style: inherit !important; margin-bottom: 0.4rem !important; line-height: 1.75 !important; color: #4b5563 !important; }
+                                    .job-rich-content h1 { font-size: 1.5rem !important; font-weight: 800 !important; color: #003366 !important; margin: 1.5rem 0 0.75rem !important; }
+                                    .job-rich-content h2 { font-size: 1.25rem !important; font-weight: 700 !important; color: #003366 !important; margin: 1.5rem 0 0.75rem !important; }
+                                    @media (min-width: 768px) {
+                                        .job-rich-content h1 { font-size: 1.875rem !important; }
+                                        .job-rich-content h2 { font-size: 1.5rem !important; }
+                                    }
+                                    .job-rich-content h3 { font-size: 1.125rem !important; font-weight: 700 !important; color: #003366 !important; margin: 1.25rem 0 0.5rem !important; }
                                     .job-rich-content strong, .job-rich-content b { font-weight: 700 !important; color: #111827 !important; }
-                                    .job-rich-content em { font-style: italic !important; }
-                                    .job-rich-content u { text-decoration: underline !important; }
-                                    .job-rich-content s { text-decoration: line-through !important; }
-                                    .job-rich-content blockquote { border-left: 4px solid #FFCC00 !important; background: #f0f4ff !important; padding: 1rem 1.5rem !important; border-radius: 0 1rem 1rem 0 !important; margin: 1rem 0 !important; color: #374151 !important; }
+                                    .job-rich-content img { max-width: 100% !important; height: auto !important; border-radius: 1rem !important; margin: 1rem 0 !important; }
+                                    .job-rich-content blockquote { border-left: 4px solid #FFCC00 !important; background: #f9fafb !important; padding: 1rem 1.25rem !important; border-radius: 0 1rem 1rem 0 !important; margin: 1rem 0 !important; color: #4b5563 !important; font-style: italic; }
                                     .job-rich-content a { color: #003366 !important; text-decoration: underline !important; }
                                 `}</style>
                                 <div
