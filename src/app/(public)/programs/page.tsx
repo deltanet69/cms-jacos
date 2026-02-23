@@ -157,11 +157,11 @@ const GalleryRow = ({ images }: { images: typeof GALLERY_IMAGES }) => {
     };
 
     return (
-        <div ref={rowRef} className="flex gap-1 h-110" onMouseLeave={onLeave}>
+        <div ref={rowRef} className="flex flex-col md:flex-row gap-2 h-auto md:h-110" onMouseLeave={onLeave}>
             {images.map((img, i) => (
                 <div
                     key={i}
-                    className="gallery-item relative flex-1 overflow-hidden rounded-2xl cursor-pointer group"
+                    className="gallery-item relative flex-1 h-64 md:h-auto overflow-hidden rounded-2xl cursor-pointer group"
                     onMouseEnter={() => onHover(i)}
                 >
                     <img
@@ -300,17 +300,17 @@ export default function ProgramsPage() {
     return (
         <div className="bg-white">
             {/* ── PAGE HEADER ── */}
-            <section className="relative h-[45vh] pb-20 flex items-end justify-center overflow-hidden bg-[#003366]">
+            <section className="relative h-[45vh] lg:h-[40vh] pb-10 flex items-end justify-center overflow-hidden bg-[#003366]">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#FFCC0010,transparent_50%)]"></div>
                     <div className="absolute inset-0 bg-gradient-to-b from-[#003366]/80 via-transparent to-[#003366]"></div>
                 </div>
 
                 <div className="container mx-auto px-5 lg:px-12 relative z-10 text-center">
-                    <span className="inline-block rounded-full bg-[#FFCC00]/20 border border-[#FFCC00]/30 px-12 py-2 text-md font-bold text-[#FFCC00] mb-6 animate-fade-in">
+                    <span className="inline-block rounded-full bg-[#FFCC00]/20 border border-[#FFCC00]/30 px-6 md:px-12 py-2 text-xs md:text-sm font-bold text-[#FFCC00] mb-6 animate-fade-in uppercase tracking-widest">
                         Excellence in Education
                     </span>
-                    <h1 className="text-5xl md:text-6xl font-bold text-white ">
+                    <h1 className="text-4xl md:text-6xl font-bold text-white leading-[1.1]">
                         Our Educational <span className="text-[#FFCC00]">Programs</span>
                     </h1>
                 </div>
@@ -371,19 +371,19 @@ export default function ProgramsPage() {
             <CampusGallery />
 
             {/* ── CALL TO ACTION — CAMPUS TOUR ── */}
-            <section className="container mx-auto px-5 lg:px-12 pb-32">
-                <div className="relative overflow-hidden rounded-4xl bg-[#003366] p-16 lg:p-24 shadow-2xl">
+            <section className="container mx-auto px-4 md:px-6 pb-32">
+                <div className="relative overflow-hidden rounded-[2.5rem] md:rounded-4xl bg-[#003366] p-10 md:p-16 lg:p-24 shadow-2xl">
                     {/* Background visual elements */}
                     <div className="absolute top-0 right-0 h-full w-1/2 bg-gradient-to-l from-[#FFCC00]/10 to-transparent"></div>
                     <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-[#FFCC00]/5 blur-[100px]"></div>
                     <div className="absolute top-1/2 right-0 -translate-y-1/2 w-64 h-64 border-[40px] border-white/5 rounded-full blur-xl"></div>
 
-                    <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
+                    <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                         <div className="flex-1 text-center lg:text-left">
-                            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-2 text-sm font-bold text-[#FFCC00] mb-8 border border-white/10">
-                                <MapPin size={18} strokeWidth={2} /> Visit JACOS
+                            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-2 text-xs font-bold text-[#FFCC00] mb-8 border border-white/10">
+                                <MapPin size={16} strokeWidth={2} /> Visit JACOS
                             </div>
-                            <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-8">
+                            <h2 className="text-3xl md:text-6xl font-bold text-white leading-tight mb-8">
                                 Experience Our <br /> <span className="text-[#FFCC00]">Campus Life</span>
                             </h2>
                             <p className="text-blue-100 text-lg max-w-xl mx-auto lg:mx-0 mb-12 leading-loose opacity-80">
@@ -393,19 +393,19 @@ export default function ProgramsPage() {
                             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
                                 <Link
                                     href="/contact"
-                                    className="group flex items-center gap-3 rounded-full bg-[#FFCC00] px-10 py-5 font-medium text-xl text-[#003366] shadow-xl hover:bg-white transition-all hover:scale-105 active:scale-95"
+                                    className="w-full sm:w-auto group flex items-center justify-center gap-3 rounded-full bg-[#FFCC00] px-10 py-5 font-bold text-lg text-[#003366] shadow-xl hover:bg-white transition-all hover:scale-105 active:scale-95"
                                 >
                                     Enquiry Now! <Calendar size={20} strokeWidth={3} className="transition-transform group-hover:rotate-12" />
                                 </Link>
                                 <div className="flex items-center gap-4 text-white/60">
                                     <div className="flex -space-x-4">
                                         {[1, 2, 3, 4].map(i => (
-                                            <div key={i} className="h-12 w-12 rounded-full border-2 border-[#003366] bg-gray-200 overflow-hidden">
+                                            <div key={i} className="h-10 w-10 md:h-12 md:w-12 rounded-full border-2 border-[#003366] bg-gray-200 overflow-hidden shrink-0">
                                                 <img src={`https://i.pravatar.cc/150?u=${i + 10}`} alt="User" />
                                             </div>
                                         ))}
                                     </div>
-                                    <span className="text-sm font-bold tracking-wide">500+ Parents Joined</span>
+                                    <span className="text-xs md:text-sm font-bold tracking-wide">500+ Parents Joined</span>
                                 </div>
                             </div>
                         </div>

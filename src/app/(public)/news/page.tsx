@@ -49,37 +49,35 @@ export default function NewsPage() {
     return (
         <div className="min-h-screen bg-white">
             {/* PREMIUM HEADER */}
-            <section className="relative h-[45vh] pb-16 flex items-end overflow-hidden bg-[#003366]">
+            <section className="relative h-[75vh] lg:h-[60vh] pb-7 flex items-end justify-center overflow-hidden bg-[#003366]">
                 {/* Background Elements */}
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px]" />
+                    <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[450px] bg-blue-500/10 rounded-full blur-[120px]" />
                     <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px]" />
                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]" />
                 </div>
 
-                <div className="container mx-auto px-4 md:px-6 relative z-10">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-                        <div className="max-w-2xl">
-                            <div className="inline-flex items-center gap-2 rounded-full bg-blue-900/50 backdrop-blur-sm border border-blue-800/50 px-4 py-1.5 text-xs font-bold text-[#FFCC00] mb-6 uppercase tracking-widest">
-                                Updates & Insights
-                            </div>
-                            <h1 className="text-4xl font-extrabold text-white md:text-6xl leading-[1.1] mb-2 uppercase tracking-tight">
-                                School <span className="text-[#FFCC00]">News</span>
-                            </h1>
-                            <p className="text-lg text-blue-100/70 leading-relaxed font-medium">
-                                Stay updated with the latest happenings at JACOS Islamic School.
-                            </p>
+                <div className="container mx-auto px-5 lg:px-12 relative z-10 text-center pt-32 pb-10">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="inline-flex items-center gap-2 rounded-full bg-blue-900/50 backdrop-blur-sm border border-blue-800/50 px-6 py-1.5 text-xs font-bold text-[#FFCC00] mb-6 uppercase tracking-widest animate-fade-in">
+                            Updates & Insights
                         </div>
+                        <h1 className="text-3xl md:text-6xl font-extrabold text-white leading-tight mb-6 uppercase tracking-tight">
+                            School <span className="text-[#FFCC00]">News</span>
+                        </h1>
+                        <p className="text-lg text-blue-100/70 leading-relaxed font-medium mb-10 max-w-2xl mx-auto">
+                            Stay updated with the latest happenings at JACOS Islamic School.
+                        </p>
 
-                        {/* Search Bar - Integrated into Header */}
-                        <div className="relative w-full md:w-80 group">
+                        {/* Search Bar - Centered */}
+                        <div className="relative w-full max-w-md mx-auto group">
                             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-300 group-focus-within:text-[#FFCC00] transition-colors" size={20} />
                             <input
                                 type="text"
                                 placeholder="Search articles..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full rounded-2xl border border-blue-800/50 bg-blue-900/30 backdrop-blur-md py-4 pl-12 pr-4 text-sm text-white placeholder:text-blue-300/50 focus:border-[#FFCC00] focus:ring-1 focus:ring-[#FFCC00] focus:outline-none transition-all"
+                                className="w-full rounded-2xl border border-blue-800/50 bg-blue-900/30 backdrop-blur-md py-4 pl-12 pr-4 text-sm text-white placeholder:text-blue-300/50 focus:border-[#FFCC00] focus:ring-1 focus:ring-[#FFCC00] focus:outline-none transition-all shadow-2xl"
                             />
                         </div>
                     </div>
@@ -88,7 +86,7 @@ export default function NewsPage() {
 
             {/* NEWS LISTING */}
             <section className="py-20 lg:py-24">
-                <div className="container mx-auto px-4 md:px-6">
+                <div className="container mx-auto px-5 lg:px-12">
                     {loading ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                             {[1, 2, 3].map(i => (

@@ -88,7 +88,7 @@ export default function EnquiryPage() {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* PREMIUM HEADER */}
-            <section className="relative h-[45vh] pb-16 flex items-end overflow-hidden bg-[#003366]">
+            <section className="relative h-[45vh] lg:h-[40vh] pb-10  flex items-end overflow-hidden bg-[#003366]">
                 {/* Background Elements */}
                 <div className="absolute inset-0 z-0">
                     <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px]" />

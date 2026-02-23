@@ -87,7 +87,7 @@ export default function CareerPage() {
         <div className="bg-white">
 
             {/* ── HERO ──────────────────────────────────────────────────────────── */}
-            <section className="relative h-[45vh] pb-20 flex items-end justify-center overflow-hidden bg-[#003366]">
+            <section className="relative h-[45vh] lg:h-[40vh] pb-10 flex items-end justify-center overflow-hidden bg-[#003366]">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#FFCC0015,transparent_60%)]" />
                     <div className="absolute inset-0 bg-gradient-to-b from-[#003366]/60 via-transparent to-[#003366]" />

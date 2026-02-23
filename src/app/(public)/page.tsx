@@ -107,17 +107,17 @@ function HeroSection() {
                             {slide.desc}
                         </p>
 
-                        <div className="flex flex-wrap gap-5">
+                        <div className="flex flex-col sm:flex-row gap-5">
                             <Link
                                 href="/admission"
-                                className="px-8 py-4 rounded-full font-bold text-[#001830] transition-all transform hover:scale-105 shadow-2xl flex items-center gap-2"
+                                className="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-[#001830] transition-all transform hover:scale-105 shadow-2xl flex items-center justify-center gap-2"
                                 style={{ backgroundColor: slide.accent }}
                             >
                                 Get Started <ArrowRight size={20} strokeWidth={1} />
                             </Link>
                             <Link
                                 href="/about"
-                                className="px-8 py-4 rounded-full font-semibold text-white border border-white/30 hover:bg-white/10 backdrop-blur-sm transition-all flex items-center gap-2"
+                                className="w-full sm:w-auto px-8 py-4 rounded-full font-semibold text-white border border-white/30 hover:bg-white/10 backdrop-blur-sm transition-all flex items-center justify-center gap-2"
                             >
                                 Learn More <ChevronRight size={20} strokeWidth={1} />
                             </Link>
@@ -389,7 +389,7 @@ function ProgramsSection() {
                 {/* Header */}
                 <div className="max-w-5xl mx-auto text-center mb-16">
                     <span className="text-sm font-black uppercase tracking-widest text-[#FFCC00] bg-[#003366] px-4 py-1.5 rounded-full">Our Programs</span>
-                    <h2 className="mt-6 text-4xl md:text-5xl font-black text-[#003366] leading-tight">
+                    <h2 className="mt-6 text-3xl md:text-5xl font-black text-[#003366] leading-tight">
                         Programs for Outstanding Generations
                     </h2>
                     <p className="mt-5 text-gray-500 text-lg leading-relaxed">
@@ -398,17 +398,17 @@ function ProgramsSection() {
                 </div>
 
                 {/* Sub-programs row */}
-                <div className="flex flex-wrap justify-center gap-4 mb-16">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
                     {[
                         { emoji: "🌱", label: "Pre-School", sub: "Ages 2–4" },
                         { emoji: "⭐", label: "Kindergarten", sub: "Ages 4–6" },
                         { emoji: "📚", label: "Primary School", sub: "Ages 6–12" },
                     ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-3 bg-white rounded-lg px-6 py-4 border border-gray-100 hover:border-[#003366] hover:shadow-xl transition group cursor-pointer">
-                            <span className="text-2xl group-hover:scale-125 transition">{item.emoji}</span>
+                        <div key={i} className="flex items-center gap-4 bg-white rounded-2xl px-6 py-6 border border-gray-100 hover:border-[#003366] hover:shadow-xl transition group cursor-pointer">
+                            <span className="text-3xl group-hover:scale-125 transition">{item.emoji}</span>
                             <div>
-                                <div className="font-semibold text-[#003366] text-lg">{item.label}</div>
-                                <div className="text-md text-gray-400">{item.sub}</div>
+                                <div className="font-bold text-[#003366] text-lg">{item.label}</div>
+                                <div className="text-sm text-gray-400 font-medium">{item.sub}</div>
                             </div>
                         </div>
                     ))}
@@ -434,20 +434,22 @@ function ProgramsSection() {
                 {/* Desc below */}
                 <div className="mt-16 bg-white rounded-lg p-10 md:p-14 border border-gray-100">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <h3 className="text-3xl font-bold  text-[#003366] mb-4">Our curriculum integrates faith & innovation.</h3>
-                            <p className="text-gray-500 leading-relaxed">
+                        <div className="md:pr-8">
+                            <h3 className="text-2xl md:text-3xl font-bold text-[#003366] mb-6 leading-tight">Our curriculum integrates faith & innovation.</h3>
+                            <p className="text-gray-500 leading-relaxed mb-8">
                                 Our curriculum integrates religious education with STEAM subjects, equipping students with the skills necessary for future success. We also provide extracurricular activities that support the development of students' interests and talents — including arts, sports, and technology.
                             </p>
-                            <Link href="/programs" className="mt-8 inline-flex items-center gap-2 font-bold text-[#003366] hover:text-[#40A1FB] transition group">
+                            <Link href="/programs" className="inline-flex items-center gap-2 font-bold text-[#003366] hover:text-[#40A1FB] transition group">
                                 Explore All Programs <ArrowRight size={18} strokeWidth={1} className="group-hover:translate-x-1 transition" />
                             </Link>
                         </div>
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {["Integrated Curriculum", "Play-Based Learning", "Character Building", "Global Excellence"].map((item, i) => (
-                                <div key={i} className="flex items-start gap-3 rounded-2xl bg-gray-50 p-5 hover:bg-[#003366]/5 transition">
-                                    <CheckCircle size={24} className="text-[#FFCC00] shrink-0 mt-0.5" />
-                                    <span className="text-md font-medium text-[#003366]">{item}</span>
+                                <div key={i} className="flex items-center gap-3 rounded-2xl bg-gray-50 p-6 hover:bg-[#003366]/5 transition border border-transparent hover:border-[#003366]/10">
+                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm">
+                                        <CheckCircle size={20} className="text-[#FFCC00]" strokeWidth={1.5} />
+                                    </div>
+                                    <span className="text-sm font-bold text-[#003366]">{item}</span>
                                 </div>
                             ))}
                         </div>
