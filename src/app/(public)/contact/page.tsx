@@ -7,14 +7,13 @@ import {
     Mail,
     Phone,
     MapPin,
-    MessageSquare,
     Send,
     CheckCircle,
     Instagram,
     Youtube,
-    Facebook,
-    Clock
+    Facebook
 } from "lucide-react";
+import MapBox from "@/components/public/MapBox";
 
 export default function ContactPage() {
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -52,7 +51,7 @@ export default function ContactPage() {
     return (
         <div className="min-h-screen bg-white">
             {/* PREMIUM HEADER */}
-            <section className="relative h-[45vh] pb-16 flex items-end overflow-hidden bg-[#003366]">
+            <section className="relative h-[45vh] lg:h-[40vh] pb-10 flex items-end overflow-hidden bg-[#003366]">
                 {/* Background Elements */}
                 <div className="absolute inset-0 z-0">
                     <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px]" />
@@ -65,7 +64,7 @@ export default function ContactPage() {
                         <div className="inline-flex items-center gap-2 rounded-full bg-blue-900/50 backdrop-blur-sm border border-blue-800/50 px-4 py-1.5 text-xs font-bold text-[#FFCC00] mb-6 uppercase tracking-widest">
                             Official Channels
                         </div>
-                        <h1 className="text-4xl font-extrabold text-white md:text-6xl leading-[1.1] mb-2 uppercase tracking-tight">
+                        <h1 className="text-3xl font-extrabold text-white md:text-6xl leading-[1.1] mb-2 uppercase tracking-tight">
                             Contact <span className="text-[#FFCC00]">Us</span>
                         </h1>
                         <p className="text-lg text-blue-100/70 leading-relaxed font-medium">
@@ -94,7 +93,7 @@ export default function ContactPage() {
                                 <div>
                                     <h4 className="text-lg font-bold text-[#003366] mb-1">Our Location</h4>
                                     <p className="text-md text-gray-500 leading-relaxed">
-                                        Jakarta Cosmopolite Islamic School, Jakarta, Indonesia
+                                        Jl. Raya Condet No.5, Balekambang, Kramat jati, Jakarta Timur 13530
                                     </p>
                                 </div>
                             </div>
@@ -215,11 +214,9 @@ export default function ContactPage() {
                 </div>
             </div>
 
-            {/* MAP PLACEHOLDER */}
-            <section className="container mx-auto px-4 md:px-6 pt-24">
-                <div className="w-full aspect-video md:aspect-[21/9] rounded-[3rem] bg-gray-100 border border-gray-100 shadow-inner flex items-center justify-center text-gray-300 font-bold uppercase tracking-widest">
-                    [ Interactive Google Maps Placeholder ]
-                </div>
+            {/* INTERACTIVE MAP */}
+            <section className="w-full h-[500px] md:h-[650px] lg:h-[750px] mt-24">
+                <MapBox />
             </section>
         </div>
     );

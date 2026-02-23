@@ -30,7 +30,7 @@ export default function Navbar() {
             {/* ── PROMOTIONAL BANNER ── */}
             {bannerVisible && (
                 <div
-                    className="text-white text-center py-2.5 px-6 text-sm font-semibold relative"
+                    className="hidden md:block text-white text-center py-2.5 px-6 text-sm font-semibold relative"
                     style={{ background: "linear-gradient(to right, #f7ba2c, #ea5459)" }}
                 >
                     <span className="mr-2"></span>

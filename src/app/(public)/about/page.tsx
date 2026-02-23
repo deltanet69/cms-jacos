@@ -51,16 +51,16 @@ export default function AboutPage() {
     return (
         <div ref={sectionRef} className="bg-white">
             {/* ── HERO SECTION ── */}
-            <section className="relative h-[45vh] pb-20 flex items-end justify-center overflow-hidden bg-[#003366]">
+            <section className="relative h-[45vh] lg:h-[40vh] pb-10 flex items-end justify-center overflow-hidden bg-[#003366]">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-gradient-to-b from-[#003366]/80 via-transparent to-[#003366]"></div>
                 </div>
 
                 <div className="container mx-auto px-5 lg:px-12 relative z-10 text-center">
-                    <span className="inline-block rounded-full bg-[#FFCC00]/20 border border-[#FFCC00]/30 px-12 py-2 text-md font-bold text-[#FFCC00] mb-6 animate-fade-in">
+                    <span className="inline-block rounded-full bg-[#FFCC00]/20 border border-[#FFCC00]/30 px-6 md:px-12 py-2 text-xs md:text-sm font-bold text-[#FFCC00] mb-6 animate-fade-in uppercase tracking-widest">
                         Our Profile
                     </span>
-                    <h1 className="text-5xl md:text-5xl font-bold text-white ">
+                    <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
                         Jakarta Cosmopolite <span className="text-[#FFCC00]">Islamic School</span>
                     </h1>
                 </div>
@@ -72,8 +72,8 @@ export default function AboutPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div className="reveal-item">
                             <span className="text-sm font-medium uppercase tracking-widest text-[#FFCC00]">About Our School</span>
-                            <h2 className="mt-4 text-4xl md:text-5xl font-bold text-[#003366] leading-tight mb-8">
-                                Jakarta Cosmopolite <br /> Islamic School
+                            <h2 className="mt-4 text-3xl md:text-5xl font-bold text-[#003366] leading-tight mb-8">
+                                Jakarta Cosmopolite <br className="hidden md:block" /> Islamic School
                             </h2>
                             <div className="space-y-6 text-lg text-gray-500 leading-relaxed">
                                 <p>

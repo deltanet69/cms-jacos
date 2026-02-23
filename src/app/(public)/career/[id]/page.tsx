@@ -85,7 +85,7 @@ export default function CareerDetailPage() {
     return (
         <div className="bg-white min-h-screen">
             {/* HERO HEADER */}
-            <section className="relative min-h-[48vh] py-16 md:h-[48vh] md:py-0 flex items-end overflow-hidden bg-[#003366]">
+            <section className="relative min-h-[48vh] py-16 md:h-[48vh] pb-5 md:py-0 flex items-end overflow-hidden bg-[#003366]">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#FFCC0015,transparent_60%)]" />
                     <div className="absolute inset-0 bg-gradient-to-b from-[#003366]/60 via-transparent to-[#003366]" />

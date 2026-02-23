@@ -69,10 +69,10 @@ export default function AdmissionPage() {
                     <div className="absolute inset-0 bg-gradient-to-b from-[#003366]/60 via-transparent to-[#003366]" />
                 </div>
                 <div className="container mx-auto px-5 lg:px-12 relative z-10 text-center">
-                    <span className="inline-block rounded-full bg-[#FFCC00]/20 border border-[#FFCC00]/30 px-10 py-2 text-sm font-bold text-[#FFCC00] mb-6">
+                    <span className="inline-block rounded-full bg-[#FFCC00]/20 border border-[#FFCC00]/30 px-8 py-2 text-xs md:text-sm font-bold text-[#FFCC00] mb-6 uppercase tracking-widest">
                         Start Your Journey
                     </span>
-                    <h1 className="text-5xl md:text-6xl font-bold text-white">
+                    <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
                         Join the <span className="text-[#FFCC00]">JACOS Family</span>
                     </h1>
                 </div>
@@ -86,15 +86,15 @@ export default function AdmissionPage() {
                         {/* Left — sticky label */}
                         <div className="lg:sticky lg:top-32">
                             <span className="text-[#FFCC00] font-bold text-sm uppercase tracking-widest">Simple Process</span>
-                            <h2 className="text-4xl md:text-5xl font-bold text-[#003366] mt-4 leading-tight">
-                                How to <br /> Apply
+                            <h2 className="text-3xl md:text-5xl font-bold text-[#003366] mt-4 leading-tight">
+                                How to Apply
                             </h2>
                             <p className="text-gray-500 mt-6 text-lg leading-relaxed">
                                 Our admissions process is designed to be smooth and transparent. Follow these five steps to begin.
                             </p>
                             <Link
                                 href="/enquiry"
-                                className="mt-10 inline-flex items-center gap-3 rounded-full bg-[#FFCC00] px-8 py-4 font-bold text-[#003366] shadow-xl hover:bg-[#003366] hover:text-white transition-all hover:scale-105"
+                                className="w-full sm:w-auto mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-[#FFCC00] px-8 py-4 font-bold text-[#003366] shadow-xl hover:bg-[#003366] hover:text-white transition-all hover:scale-105"
                             >
                                 Begin Enquiry <ArrowRight size={18} strokeWidth={2} />
                             </Link>
@@ -203,13 +203,13 @@ export default function AdmissionPage() {
                     <div className="flex flex-wrap justify-center gap-4">
                         <Link
                             href="/contact"
-                            className="rounded-full bg-[#003366] px-10 py-4 font-bold text-white shadow-xl hover:bg-[#FFCC00] hover:text-[#003366] transition-all hover:scale-105"
+                            className="w-full sm:w-auto rounded-full bg-[#003366] px-10 py-4 font-bold text-white shadow-xl hover:bg-[#FFCC00] hover:text-[#003366] transition-all hover:scale-105"
                         >
                             Speak to Admissions Team
                         </Link>
                         <Link
                             href="/enquiry"
-                            className="rounded-full border-2 border-[#003366] px-10 py-4 font-bold text-[#003366] hover:bg-[#003366] hover:text-white transition-all"
+                            className="w-full sm:w-auto rounded-full border-2 border-[#003366] px-10 py-4 font-bold text-[#003366] hover:bg-[#003366] hover:text-white transition-all"
                         >
                             Submit an Enquiry
                         </Link>
